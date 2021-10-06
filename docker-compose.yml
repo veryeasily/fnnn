@@ -1,0 +1,17 @@
+version: "3.4"
+
+volumes:
+    cabal-cache:
+
+services:
+    app:
+        image: fnnn
+        working_dir: /app/
+        ports:
+            - "4000:3000"
+        volumes:
+            - ./:/app/
+            - cabal-cache:/home/app/.cabal/
+        build:
+            context: .
+            dockerfile: ./Dockerfile
